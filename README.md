@@ -34,7 +34,7 @@ WHERE
 }
 ```
 * Найти все песни, выпущенные после 2004
-``` sparl
+``` sparql
 PREFIX db1: <http://www.my.org/db1#>
 PREFIX db2: <http://www.my.org/db2#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
