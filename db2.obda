@@ -1,0 +1,45 @@
+[PrefixDeclaration]
+:		http://www.my.org/db2#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://localhost:5432/db2
+username	postgres
+password	543
+driverClass	org.postgresql.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	urn:MAPID-fcf5ff00a63e47958b944bd940bc41b6
+target		:song/{id} a :Song . 
+source		select id from song
+
+mappingId	urn:MAPID-e282c3108d704840b533cadfebe92988
+target		:song/{id} :title {title} . 
+source		select id, title from song
+
+mappingId	urn:MAPID-9e2ce0764d5c4b77a5409ad432b5e8ee
+target		:song/{id} :band {artist} . 
+source		select id, artist from song
+
+mappingId	urn:MAPID-7c34a54e30f94377aeb37a706f81ece7
+target		:song/{id} :album {album} . 
+source		select id, album from song
+
+mappingId	urn:MAPID-ae8e26baeda74ebca5e6750673a8528c
+target		:genre/{id} a :Genre . 
+source		select id from genre
+
+mappingId	urn:MAPID-7981e612bb564f5d8f00c239a62fa863
+target		:genre/{id} :title {title} . 
+source		select id, title from genre
+
+mappingId	urn:MAPID-15a7d6a3b297429ab5a043c4111f610c
+target		:song/{song_id} :genre :genre/{genre_id} . 
+source		select song_id, genre_id from song_genre
+]]
+

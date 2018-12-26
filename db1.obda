@@ -1,0 +1,45 @@
+[PrefixDeclaration]
+:		http://www.my.org/db1#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://localhost:5432/db1
+username	postgres
+password	543
+driverClass	org.postgresql.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	urn:MAPID-cd099d3289a24721a72f0804e5e92385
+target		:band/{id} a :Band . 
+source		select id from band;
+
+mappingId	urn:MAPID-0a1bb585989d484192e14b374e0e8316
+target		:band/{id} :name {name} . 
+source		select id, name from band
+
+mappingId	urn:MAPID-2137d9c17776476bb9683be6264ca018
+target		:band/{id} :founded {founded} . 
+source		select id, founded from band
+
+mappingId	urn:MAPID-d2377942c8b34825b1b2306360ac8373
+target		:album/{id} a :Album . 
+source		select id from album
+
+mappingId	urn:MAPID-e030aebc77e34d819bae06f76fe08609
+target		:album/{id} :title {title} . 
+source		select id, title from album
+
+mappingId	urn:MAPID-c94ade069dae419188a20ce0bdd1d91b
+target		:album/{id} :artist :band/{band_id} . 
+source		select id, band_id from album
+
+mappingId	urn:MAPID-c6df063c854c491fb56a6cc3a729f098
+target		:album/{id} :released {released} . 
+source		select id, released from album
+]]
+
